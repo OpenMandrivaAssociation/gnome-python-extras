@@ -40,7 +40,7 @@ bindings for GNOME.
 Summary: Python bindings for GNU Data Access
 Group: Development/GNOME and GTK+
 Requires: %name = %version
-BuildRequires: gda1.2-devel
+BuildRequires: gda2.0-devel
 
 %description -n %oname-gda
 This module contains a wrapper that allows programs written in Python
