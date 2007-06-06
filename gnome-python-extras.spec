@@ -6,8 +6,8 @@
 
 Summary: GNOME extra bindings for Python
 Name: gnome-python-extras
-Version: 2.14.3
-Release: %mkrel 4
+Version: 2.19.1
+Release: %mkrel 1
 Source: ftp://ftp.gnome.org/pub/GNOME/sources/%name/%name-%{version}.tar.bz2
 Patch: gnome-python-extras-2.14.1-firefox.patch
 Patch1: gnome-python-extras-2.12.1-gksu.patch
@@ -147,12 +147,13 @@ rm -rf %buildroot
 %if %build_gda
 %files -n %oname-gda
 %defattr(755,root,root,755)
+%_datadir/pygtk/2.0/argtypes/gda-*
 %{_libdir}/python%pyver/site-packages/gtk-2.0/gda.so
 
 %files -n %oname-gda-devel
 %defattr(755,root,root,755)
-%_libdir/pkgconfig/pygda-1.2.pc
-%_includedir/pygda-1.2/
+%_libdir/pkgconfig/pygda-3.0.pc
+%_includedir/pygda-3.0/
 %endif
 
 %files -n %oname-gdl
