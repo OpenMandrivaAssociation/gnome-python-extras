@@ -7,7 +7,7 @@
 Summary: GNOME extra bindings for Python
 Name: gnome-python-extras
 Version: 2.19.1
-Release: %mkrel 2
+Release: %mkrel 3
 Source: ftp://ftp.gnome.org/pub/GNOME/sources/%name/%name-%{version}.tar.bz2
 Patch: gnome-python-extras-2.14.1-firefox.patch
 Patch1: gnome-python-extras-2.12.1-gksu.patch
@@ -19,6 +19,7 @@ BuildRequires: pygtk2.0-devel >= %pygtk
 BuildRequires: gnome-python >= %gnomepython
 BuildRequires: python-devel >= 2.2
 BuildRequires: libgnomeui2-devel >= 2.0.0
+#gw, hmm, it still needs gtksourceview-1.0
 BuildRequires: gtksourceview-devel >= 1.1.0
 BuildRequires: libexpat-devel
 BuildRequires: avahi-glib-devel avahi-client-devel
