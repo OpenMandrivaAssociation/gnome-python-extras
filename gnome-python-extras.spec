@@ -14,6 +14,7 @@ Patch1: gnome-python-extras-2.12.1-gksu.patch
 URL: ftp://ftp.gnome.org/pub/GNOME/sources/gnome-python/
 License: LGPL
 Group: Development/GNOME and GTK+
+BuildRoot: %{_tmppath}/%name-root
 BuildRequires: pygtk2.0-devel >= %pygtk
 BuildRequires: gnome-python >= %gnomepython
 BuildRequires: python-devel >= 2.2
