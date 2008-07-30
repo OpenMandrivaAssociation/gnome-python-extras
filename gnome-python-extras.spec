@@ -3,6 +3,8 @@
 %define gnomepython 2.10.0
 %define oname gnome-python
 %define build_gda 1
+%define build_gksu 0
+%define build_gksu2 0
 
 %define xulrunner 1.9
 Summary: GNOME extra bindings for Python
@@ -59,6 +61,7 @@ This is a C header needed for building extensions to the GNU Data
 Access Python bindings.
 %endif
 
+%if %build_gksu
 %package -n %oname-gksu
 Summary: Python bindings for GKSu
 Group: Development/GNOME and GTK+
@@ -69,6 +72,19 @@ BuildRequires: libgksuui-devel
 %description -n %oname-gksu
 This module contains a wrapper that allows programs written in Python
 to use GKSu.
+%endif
+
+%if %build_gksu2
+%package -n %oname-gksu2
+Summary: Python bindings for GKSu2
+Group: Development/GNOME and GTK+
+Requires: %name = %version
+BuildRequires: libgksu2-devel
+
+%description -n %oname-gksu2
+This module contains a wrapper that allows programs written in Python
+to use GKSu.
+%endif
 
 %package -n %oname-gdl
 Summary: Python bindings for Gnome Devtool Libraries
@@ -139,10 +155,17 @@ rm -rf %buildroot
 %_libdir/python%pyver/site-packages/gtk-2.0/egg/
 %doc examples/egg/
 
+%if %build_gksu
 %files -n %oname-gksu
 %defattr(755,root,root,755)
 %_libdir/python%pyver/site-packages/gtk-2.0/gksu/
+%endif
 
+%if %build_gksu2
+%files -n %oname-gksu2
+%defattr(755,root,root,755)
+%_libdir/python%pyver/site-packages/gtk-2.0/gksu2/
+%endif
 
 %if %build_gda
 %files -n %oname-gda
