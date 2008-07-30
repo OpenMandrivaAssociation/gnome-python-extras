@@ -94,7 +94,7 @@ the gtkspell library.
 Summary: Python bindings for mozilla
 Group: Development/GNOME and GTK+
 Requires: %name = %version
-BuildRequires: xulrunner-devel-unstable >= %xulrunnner
+BuildRequires: xulrunner-devel-unstable >= %xulrunner
 Requires: %mklibname xulrunner %xulrunner
 
 %description -n %oname-gtkmozembed
