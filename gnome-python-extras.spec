@@ -4,15 +4,17 @@
 %define oname gnome-python
 %define build_gda 1
 
+%define xulrunner 1.9
 Summary: GNOME extra bindings for Python
 Name: gnome-python-extras
 Version: 2.19.1
-Release: %mkrel 12
+Release: %mkrel 13
 Source: ftp://ftp.gnome.org/pub/GNOME/sources/%name/%name-%{version}.tar.bz2
-Patch: gnome-python-extras-2.14.1-firefox.patch
+#gw from Fedora, build with xulrunner
+Patch: gnome-python-extras-2.19.1-xulrunner.patch
 Patch1: gnome-python-extras-2.12.1-gksu.patch
 URL: ftp://ftp.gnome.org/pub/GNOME/sources/gnome-python/
-License: LGPL
+License: GPLv2+ and LGPLv2+
 Group: Development/GNOME and GTK+
 BuildRoot: %{_tmppath}/%name-root
 BuildRequires: pygtk2.0-devel >= %pygtk
@@ -92,9 +94,8 @@ the gtkspell library.
 Summary: Python bindings for mozilla
 Group: Development/GNOME and GTK+
 Requires: %name = %version
-BuildRequires: mozilla-firefox-devel
-%define firefox_version %(rpm -q mozilla-firefox --queryformat %{VERSION})
-Requires: %mklibname mozilla-firefox %{firefox_version}
+BuildRequires: xulrunner-devel-unstable >= %xulrunnner
+Requires: %mklibname xulrunner %xulrunner
 
 %description -n %oname-gtkmozembed
 This module contains a wrapper that allows gnome python apps to embed
@@ -112,13 +113,11 @@ Python
 %prep
 %setup -q
 %patch1 -p1 -b .gtksu
-%if %mdkversion <= 200700
-%patch -p1 -b .firefox
+%patch -p1 -b .xul
 autoconf
-%endif
 
 %build
-./configure --prefix=%_prefix --libdir=%_libdir
+./configure --prefix=%_prefix --libdir=%_libdir --with-gtkmozembed=mozilla
 
 %make GNOME_PYTHON_DEFSDIR=`pkg-config --variable=defsdir gnome-python-2.0`
 
