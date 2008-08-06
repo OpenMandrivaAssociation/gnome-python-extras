@@ -10,7 +10,7 @@
 Summary: GNOME extra bindings for Python
 Name: gnome-python-extras
 Version: 2.19.1
-Release: %mkrel 14
+Release: %mkrel 15
 Source: ftp://ftp.gnome.org/pub/GNOME/sources/%name/%name-%{version}.tar.bz2
 #gw from Fedora, build with xulrunner
 Patch: gnome-python-extras-2.19.1-xulrunner.patch
