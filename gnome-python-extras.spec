@@ -7,10 +7,13 @@
 %define build_gksu2 0
 
 %define xulrunner 1.9
+%define xullibname %mklibname xulrunner %xulrunner
+%define xulver %(rpm -q --queryformat %%{VERSION} %xullibname)
+
 Summary: GNOME extra bindings for Python
 Name: gnome-python-extras
 Version: 2.19.1
-Release: %mkrel 18
+Release: %mkrel 19
 Source: ftp://ftp.gnome.org/pub/GNOME/sources/%name/%name-%{version}.tar.bz2
 #gw from Fedora, build with xulrunner
 Patch: gnome-python-extras-2.19.1-xulrunner.patch
@@ -112,7 +115,7 @@ Summary: Python bindings for mozilla
 Group: Development/GNOME and GTK+
 Requires: %name = %version
 BuildRequires: xulrunner-devel-unstable >= %xulrunner
-Requires: %mklibname xulrunner %xulrunner
+Requires: %xullibname = %xulver
 
 %description -n %oname-gtkmozembed
 This module contains a wrapper that allows gnome python apps to embed
