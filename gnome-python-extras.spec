@@ -19,8 +19,8 @@ Source: ftp://ftp.gnome.org/pub/GNOME/sources/%name/%name-%{version}.tar.bz2
 Patch: gnome-python-extras-2.19.1-xulrunner.patch
 Patch1: gnome-python-extras-2.12.1-gksu.patch
 Patch2: gnome-python-extras-2.19.1-new-gdl.patch
-Patch3: gnome-python-extras-2.19.1-linkage.patch 
-URL: ftp://ftp.gnome.org/pub/GNOME/sources/gnome-python/
+Patch3: gnome-python-extras-2.19.1-linkage.patch
+URL: ftp://ftp.gnome.org/pub/GNOME/sources/gnome-python-extras
 License: GPLv2+ and LGPLv2+
 Group: Development/GNOME and GTK+
 BuildRoot: %{_tmppath}/%name-root
