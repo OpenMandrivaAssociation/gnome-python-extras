@@ -13,12 +13,13 @@
 Summary: GNOME extra bindings for Python
 Name: gnome-python-extras
 Version: 2.19.1
-Release: %mkrel 23
+Release: %mkrel 24
 Source: ftp://ftp.gnome.org/pub/GNOME/sources/%name/%name-%{version}.tar.bz2
 #gw from Fedora, build with xulrunner
 Patch: gnome-python-extras-2.19.1-xulrunner.patch
 Patch1: gnome-python-extras-2.12.1-gksu.patch
 Patch2: gnome-python-extras-2.19.1-new-gdl.patch
+Patch3: gnome-python-extras-2.19.1-linkage.patch 
 URL: ftp://ftp.gnome.org/pub/GNOME/sources/gnome-python/
 License: GPLv2+ and LGPLv2+
 Group: Development/GNOME and GTK+
@@ -135,16 +136,19 @@ Python
 %patch1 -p1 -b .gtksu
 %patch -p1 -b .xul
 %patch2 -p1
+%patch3 -p0
+aclocal
 autoconf
+automake
 
 %build
-./configure --prefix=%_prefix --libdir=%_libdir --with-gtkmozembed=mozilla
+%configure2_5x --with-gtkmozembed=mozilla
+%make
 
-%make GNOME_PYTHON_DEFSDIR=`pkg-config --variable=defsdir gnome-python-2.0`
 
 %install
 rm -rf $RPM_BUILD_ROOT
-%makeinstall
+%makeinstall_std
 find $RPM_BUILD_ROOT -name '*.la' -exec rm {} \;
 
 %clean
