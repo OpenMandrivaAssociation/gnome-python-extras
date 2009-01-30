@@ -3,6 +3,7 @@
 %define gnomepython 2.10.0
 %define oname gnome-python
 %define build_gda 1
+%define gdaapi 4.0
 %define build_gksu 0
 %define build_gksu2 0
 
@@ -12,14 +13,10 @@
 
 Summary: GNOME extra bindings for Python
 Name: gnome-python-extras
-Version: 2.19.1
-Release: %mkrel 24
+Version: 2.25.2
+Release: %mkrel 1
 Source: ftp://ftp.gnome.org/pub/GNOME/sources/%name/%name-%{version}.tar.bz2
-#gw from Fedora, build with xulrunner
-Patch: gnome-python-extras-2.19.1-xulrunner.patch
-Patch1: gnome-python-extras-2.12.1-gksu.patch
-Patch2: gnome-python-extras-2.19.1-new-gdl.patch
-Patch3: gnome-python-extras-2.19.1-linkage.patch
+Patch3: gnome-python-extras-2.25.1-linkage.patch
 URL: ftp://ftp.gnome.org/pub/GNOME/sources/gnome-python-extras
 License: GPLv2+ and LGPLv2+
 Group: Development/GNOME and GTK+
@@ -32,6 +29,7 @@ BuildRequires: libgnomeui2-devel >= 2.0.0
 BuildRequires: gtksourceview1-devel >= 1.1.0
 BuildRequires: libexpat-devel
 BuildRequires: avahi-glib-devel avahi-client-devel
+BuildRequires: gtk-doc
 Requires: gnome-python >= %gnomepython
 Requires: gnome-python-gnomevfs >= %gnomepython
 
@@ -50,7 +48,7 @@ bindings for GNOME.
 Summary: Python bindings for GNU Data Access
 Group: Development/GNOME and GTK+
 Requires: %name = %version
-BuildRequires: gda2.0-devel
+BuildRequires: gda%gdaapi-devel >= 3.99.9
 
 %description -n %oname-gda
 This module contains a wrapper that allows programs written in Python
@@ -133,16 +131,11 @@ Python
 
 %prep
 %setup -q
-%patch1 -p1 -b .gtksu
-%patch -p1 -b .xul
-%patch2 -p1
-%patch3 -p0
-aclocal
-autoconf
-automake
+%patch3 -p1 -b .linkage
+autoreconf -fi
 
 %build
-%configure2_5x --with-gtkmozembed=mozilla
+%configure2_5x --with-gtkmozembed=mozilla --enable-docs
 %make
 
 
@@ -184,8 +177,8 @@ rm -rf %buildroot
 
 %files -n %oname-gda-devel
 %defattr(755,root,root,755)
-%_libdir/pkgconfig/pygda-3.0.pc
-%_includedir/pygda-3.0/
+%_libdir/pkgconfig/pygda-%gdaapi.pc
+%_includedir/pygda-%gdaapi/
 %endif
 
 %files -n %oname-gdl
