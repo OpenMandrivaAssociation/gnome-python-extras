@@ -30,6 +30,11 @@ BuildRequires: gtksourceview1-devel >= 1.1.0
 BuildRequires: libexpat-devel
 BuildRequires: avahi-glib-devel avahi-client-devel
 BuildRequires: gtk-doc
+# gstreamer suggests codeine, codeine requires gnome-python-gtkmozembed
+# which means gnome-python-extras requires itslef to build.
+# To fix this problem, we need to conflicts with gtkmozbembed, until
+# iurt uses '--no-suggests' by default.
+BuildConflicts:	gnome-python-gtkmozembed
 Requires: gnome-python >= %gnomepython
 Requires: gnome-python-gnomevfs >= %gnomepython
 
