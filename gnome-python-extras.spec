@@ -17,6 +17,7 @@ Version: 2.25.3
 Release: %mkrel 5
 Source: ftp://ftp.gnome.org/pub/GNOME/sources/%name/%name-%{version}.tar.bz2
 Patch3: gnome-python-extras-2.25.1-linkage.patch
+Patch4: gnome-python-extras-2.25.3-drop-private-gdl-types.patch
 URL: ftp://ftp.gnome.org/pub/GNOME/sources/gnome-python-extras
 License: GPLv2+ and LGPLv2+
 Group: Development/GNOME and GTK+
@@ -137,6 +138,7 @@ Python
 %prep
 %setup -q
 %patch3 -p1 -b .linkage
+%patch4 -p0 -b .gdl
 autoreconf -fi
 
 %build
