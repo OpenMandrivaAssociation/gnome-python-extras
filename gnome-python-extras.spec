@@ -10,7 +10,7 @@
 Summary: GNOME extra bindings for Python
 Name: gnome-python-extras
 Version: 2.25.3
-Release: %mkrel 20
+Release: %mkrel 21
 Source: ftp://ftp.gnome.org/pub/GNOME/sources/%name/%name-%{version}.tar.bz2
 Patch3: gnome-python-extras-2.25.1-linkage.patch
 Patch4: gnome-python-extras-2.25.3-drop-private-gdl-types.patch
