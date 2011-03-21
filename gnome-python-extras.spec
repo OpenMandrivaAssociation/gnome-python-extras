@@ -26,6 +26,7 @@ BuildRequires: libgnomeui2-devel >= 2.0.0
 BuildRequires: gtksourceview1-devel >= 1.1.0
 BuildRequires: libexpat-devel
 BuildRequires: avahi-glib-devel avahi-client-devel
+BuildRequires: python-gobject-devel
 BuildRequires: gtk-doc docbook-dtd412-xml
 # gstreamer suggests codeine, codeine requires gnome-python-gtkmozembed
 # which means gnome-python-extras requires itslef to build.
