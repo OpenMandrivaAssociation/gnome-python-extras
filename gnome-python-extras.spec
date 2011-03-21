@@ -10,7 +10,7 @@
 Summary: GNOME extra bindings for Python
 Name: gnome-python-extras
 Version: 2.25.3
-Release: %mkrel 21
+Release: %mkrel 22
 Source: ftp://ftp.gnome.org/pub/GNOME/sources/%name/%name-%{version}.tar.bz2
 Patch3: gnome-python-extras-2.25.1-linkage.patch
 Patch4: gnome-python-extras-2.25.3-drop-private-gdl-types.patch
@@ -26,7 +26,7 @@ BuildRequires: libgnomeui2-devel >= 2.0.0
 BuildRequires: gtksourceview1-devel >= 1.1.0
 BuildRequires: libexpat-devel
 BuildRequires: avahi-glib-devel avahi-client-devel
-BuildRequires: gtk-doc
+BuildRequires: gtk-doc docbook-dtd412-xml
 # gstreamer suggests codeine, codeine requires gnome-python-gtkmozembed
 # which means gnome-python-extras requires itslef to build.
 # To fix this problem, we need to conflicts with gtkmozbembed, until
