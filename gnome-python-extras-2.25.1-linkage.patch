@@ -1,0 +1,71 @@
+diff -p -up gnome-python-extras-2.25.1/egg/recent/Makefile.am.linkage gnome-python-extras-2.25.1/egg/recent/Makefile.am
+--- gnome-python-extras-2.25.1/egg/recent/Makefile.am.linkage	2008-12-12 02:06:29.000000000 +0100
++++ gnome-python-extras-2.25.1/egg/recent/Makefile.am	2009-01-25 11:48:05.000000000 +0100
+@@ -3,7 +3,7 @@
+ ## libeggrecent
+ noinst_LTLIBRARIES = libeggrecent.la
+ 
+-libeggrecent_la_LIBADD = $(EGG_RECENT_LIBS)
++libeggrecent_la_LIBADD = $(EGG_RECENT_LIBS) -lpython$(PYTHON_VERSION)
+ 
+ libeggrecent_la_CFLAGS = \
+ 	$(EGG_RECENT_CFLAGS)		\
+diff -p -up gnome-python-extras-2.25.1/egg/tray/Makefile.am.linkage gnome-python-extras-2.25.1/egg/tray/Makefile.am
+--- gnome-python-extras-2.25.1/egg/tray/Makefile.am.linkage	2008-12-12 02:06:29.000000000 +0100
++++ gnome-python-extras-2.25.1/egg/tray/Makefile.am	2009-01-25 11:48:05.000000000 +0100
+@@ -17,7 +17,7 @@ pyeggexecdir = $(pkgpyexecdir)/egg
+ pyeggexec_LTLIBRARIES = trayicon.la
+ trayicon_la_CFLAGS = $(EGGTRAY_CFLAGS)
+ trayicon_la_LDFLAGS = $(common_ldflags) -export-symbols-regex inittrayicon
+-trayicon_la_LIBADD = $(EGGTRAY_LIBS)
++trayicon_la_LIBADD = $(EGGTRAY_LIBS) -lpython$(PYTHON_VERSION)
+ trayicon_la_SOURCES = trayiconmodule.c eggtrayicon.c eggtrayicon.h
+ nodist_trayicon_la_SOURCES = trayicon.c
+ CLEANFILES = trayicon.c
+diff -p -up gnome-python-extras-2.25.1/gda/Makefile.am.linkage gnome-python-extras-2.25.1/gda/Makefile.am
+diff -p -up gnome-python-extras-2.25.1/gdl/Makefile.am.linkage gnome-python-extras-2.25.1/gdl/Makefile.am
+--- gnome-python-extras-2.25.1/gdl/Makefile.am.linkage	2008-12-12 02:06:29.000000000 +0100
++++ gnome-python-extras-2.25.1/gdl/Makefile.am	2009-01-25 11:48:05.000000000 +0100
+@@ -10,7 +10,7 @@ pkgpyexecdir = $(pyexecdir)/gtk-2.0
+ # gdl module
+ pkgpyexec_LTLIBRARIES = gdl.la
+ gdl_la_LDFLAGS = -module -avoid-version -export-symbols-regex initgdl
+-gdl_la_LIBADD = $(GDL_LIBS)
++gdl_la_LIBADD = $(GDL_LIBS) -lpython$(PYTHON_VERSION)
+ gdl_la_SOURCES = gdlmodule.c 
+ nodist_gdl_la_SOURCES = gdl.c
+ gdl.c: gdl.defs gdl.override
+diff -p -up gnome-python-extras-2.25.1/gtkhtml2/Makefile.am.linkage gnome-python-extras-2.25.1/gtkhtml2/Makefile.am
+--- gnome-python-extras-2.25.1/gtkhtml2/Makefile.am.linkage	2008-12-12 02:06:29.000000000 +0100
++++ gnome-python-extras-2.25.1/gtkhtml2/Makefile.am	2009-01-25 11:48:05.000000000 +0100
+@@ -18,7 +18,7 @@ pkgpyexec_LTLIBRARIES = gtkhtml2.la
+ endif
+ gtkhtml2_la_CFLAGS = $(GTKHTML2_CFLAGS)
+ gtkhtml2_la_LDFLAGS = $(common_ldflags) -export-symbols-regex initgtkhtml2
+-gtkhtml2_la_LIBADD = $(GTKHTML2_LIBS)
++gtkhtml2_la_LIBADD = $(GTKHTML2_LIBS) -lpython$(PYTHON_VERSION)
+ gtkhtml2_la_SOURCES = gtkhtml2module.c
+ nodist_gtkhtml2_la_SOURCES = gtkhtml2.c
+ CLEANFILES = gtkhtml2.c
+diff -p -up gnome-python-extras-2.25.1/gtkmozembed/Makefile.am.linkage gnome-python-extras-2.25.1/gtkmozembed/Makefile.am
+--- gnome-python-extras-2.25.1/gtkmozembed/Makefile.am.linkage	2008-12-12 02:06:29.000000000 +0100
++++ gnome-python-extras-2.25.1/gtkmozembed/Makefile.am	2009-01-25 11:49:37.000000000 +0100
+@@ -14,7 +14,7 @@ pkgpyexec_LTLIBRARIES = gtkmozembed.la
+ gtkmozembed_la_LDFLAGS = -module -avoid-version	\
+ 	-export-symbols-regex initgtkmozembed	\
+ 	-R$(MOZILLA_HOME) -L$(MOZILLA_HOME)
+-gtkmozembed_la_LIBADD = $(GTKMOZEMBED_LIBS)
++gtkmozembed_la_LIBADD = $(GTKMOZEMBED_LIBS) -lpython$(PYTHON_VERSION)
+ gtkmozembed_la_SOURCES = gtkmozembedmodule.c
+ nodist_gtkmozembed_la_SOURCES = gtkmozembed.c
+ gtkmozembed.c: gtkmozembed.defs gtkmozembed.override
+diff -p -up gnome-python-extras-2.25.1/gtkspell/Makefile.am.linkage gnome-python-extras-2.25.1/gtkspell/Makefile.am
+--- gnome-python-extras-2.25.1/gtkspell/Makefile.am.linkage	2008-12-12 02:06:29.000000000 +0100
++++ gnome-python-extras-2.25.1/gtkspell/Makefile.am	2009-01-25 11:48:05.000000000 +0100
+@@ -8,4 +8,5 @@ pkgpyexecdir = $(pyexecdir)/gtk-2.0
+ pkgpyexec_LTLIBRARIES = gtkspell.la
+ 
+ gtkspell_la_SOURCES = gtkspellmodule.c
+-gtkspell_la_LDFLAGS = $(common_ldflags) $(GTKSPELL_LIBS) -export-symbols-regex initgtkspell
++gtkspell_la_LDFLAGS = $(common_ldflags) -export-symbols-regex initgtkspell
++gtkspell_la_LIBADD = $(GTKSPELL_LIBS) -lpython$(PYTHON_VERSION)
