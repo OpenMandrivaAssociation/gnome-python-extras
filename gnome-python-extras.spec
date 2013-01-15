@@ -16,7 +16,8 @@ Release:	26
 License:	GPLv2+ and LGPLv2+
 Group:		Development/GNOME and GTK+
 URL:		ftp://ftp.gnome.org/pub/GNOME/sources/gnome-python-extras
-Source:		ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
+Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
+Patch2:		gnome-python-extras-automake-1.13.patch
 Patch3:		gnome-python-extras-2.25.1-linkage.patch
 Patch4:		gnome-python-extras-2.25.3-drop-private-gdl-types.patch
 
@@ -139,6 +140,7 @@ Python
 
 %prep
 %setup -q
+%patch2 -p1 -b .automake113~
 %patch3 -p1 -b .linkage
 %patch4 -p0 -b .gdl
 autoreconf -fi

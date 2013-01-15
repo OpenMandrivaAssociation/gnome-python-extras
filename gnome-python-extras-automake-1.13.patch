@@ -1,0 +1,11 @@
+--- gnome-python-extras-2.25.3/configure.ac.bero	2013-01-15 22:21:06.289087974 +0100
++++ gnome-python-extras-2.25.3/configure.ac	2013-01-15 22:21:13.901996902 +0100
+@@ -27,7 +27,7 @@ m4_define(gksuui_required_version,
+ AC_INIT(gnome-python-extras, gnome_python_extras_version,
+         [http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-python])
+ dnl AC_CONFIG_SRCDIR([gnome/uimodule.c])
+-AM_CONFIG_HEADER(config.h)
++AC_CONFIG_HEADERS([config.h])
+ 
+ AM_INIT_AUTOMAKE
+ 
