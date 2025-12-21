@@ -21,6 +21,11 @@ Patch2:		gnome-python-extras-automake-1.13.patch
 Patch3:		gnome-python-extras-2.25.1-linkage.patch
 Patch4:		gnome-python-extras-2.25.3-drop-private-gdl-types.patch
 
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	pygtk2.0-devel >= %{pygtk}
 BuildRequires:	gnome-python >= %{gnomepython}
 BuildRequires:	python-devel >= 2.2
