@@ -12,7 +12,7 @@
 Summary:	GNOME extra bindings for Python
 Name:		gnome-python-extras
 Version:	2.25.3
-Release:	26
+Release:	27
 License:	GPLv2+ and LGPLv2+
 Group:		Development/GNOME and GTK+
 URL:		ftp://ftp.gnome.org/pub/GNOME/sources/gnome-python-extras
